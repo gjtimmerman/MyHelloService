@@ -12,14 +12,21 @@ namespace MyHelloClientProxy.MyHelloNamespace {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="MyHelloNamespace.IHello")]
+    [System.ServiceModel.ServiceContractAttribute(Namespace="urn:www-infosupport-com:KC:Demos", ConfigurationName="MyHelloNamespace.IHello", CallbackContract=typeof(MyHelloClientProxy.MyHelloNamespace.IHelloCallback))]
     public interface IHello {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHello/SayHello", ReplyAction="http://tempuri.org/IHello/SayHelloResponse")]
-        string SayHello(string prompt);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="urn:www-infosupport-com:KC:Demos/IHello/SayHello")]
+        void SayHello(string prompt);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IHello/SayHello", ReplyAction="http://tempuri.org/IHello/SayHelloResponse")]
-        System.Threading.Tasks.Task<string> SayHelloAsync(string prompt);
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="urn:www-infosupport-com:KC:Demos/IHello/SayHello")]
+        System.Threading.Tasks.Task SayHelloAsync(string prompt);
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    public interface IHelloCallback {
+        
+        [System.ServiceModel.OperationContractAttribute(IsOneWay=true, Action="urn:www-infosupport-com:KC:Demos/IHello/SayHelloBack")]
+        void SayHelloBack(string result);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -28,32 +35,33 @@ namespace MyHelloClientProxy.MyHelloNamespace {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class HelloClient : System.ServiceModel.ClientBase<MyHelloClientProxy.MyHelloNamespace.IHello>, MyHelloClientProxy.MyHelloNamespace.IHello {
+    public partial class HelloClient : System.ServiceModel.DuplexClientBase<MyHelloClientProxy.MyHelloNamespace.IHello>, MyHelloClientProxy.MyHelloNamespace.IHello {
         
-        public HelloClient() {
+        public HelloClient(System.ServiceModel.InstanceContext callbackInstance) : 
+                base(callbackInstance) {
         }
         
-        public HelloClient(string endpointConfigurationName) : 
-                base(endpointConfigurationName) {
+        public HelloClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName) : 
+                base(callbackInstance, endpointConfigurationName) {
         }
         
-        public HelloClient(string endpointConfigurationName, string remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public HelloClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, string remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public HelloClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(endpointConfigurationName, remoteAddress) {
+        public HelloClient(System.ServiceModel.InstanceContext callbackInstance, string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, endpointConfigurationName, remoteAddress) {
         }
         
-        public HelloClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
-                base(binding, remoteAddress) {
+        public HelloClient(System.ServiceModel.InstanceContext callbackInstance, System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+                base(callbackInstance, binding, remoteAddress) {
         }
         
-        public string SayHello(string prompt) {
-            return base.Channel.SayHello(prompt);
+        public void SayHello(string prompt) {
+            base.Channel.SayHello(prompt);
         }
         
-        public System.Threading.Tasks.Task<string> SayHelloAsync(string prompt) {
+        public System.Threading.Tasks.Task SayHelloAsync(string prompt) {
             return base.Channel.SayHelloAsync(prompt);
         }
     }

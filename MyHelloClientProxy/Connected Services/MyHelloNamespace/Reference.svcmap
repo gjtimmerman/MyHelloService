@@ -19,12 +19,13 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="net.tcp://localhost:8081/mex" Protocol="mex" SourceId="1" />
+    <MetadataSource Address="http://localhost:8080/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="08746286-a554-41b8-9503-0313c3c118e9" SourceId="1" SourceUrl="net.tcp://localhost:8081/mex" />
-    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="b950bd5e-0267-44ef-8133-a5c0926d2945" SourceId="1" SourceUrl="net.tcp://localhost:8081/mex" />
-    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="237c5bd4-d2a4-4984-8920-b686b7ce1a01" SourceId="1" SourceUrl="net.tcp://localhost:8081/mex" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="97ab0597-3e8b-49bc-a028-322763a26afd" SourceId="1" SourceUrl="http://localhost:8080/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="a100a5cf-bfde-431d-b6c2-8af3a33d234f" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd0" />
+    <MetadataFile FileName="HelloImpl.wsdl" MetadataType="Wsdl" ID="12c1b0e0-0387-4b7e-8193-d0dbffc247d3" SourceId="1" SourceUrl="http://localhost:8080/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="9f02c618-49b6-421c-b87d-df6f6070cf8f" SourceId="1" SourceUrl="http://localhost:8080/?xsd=xsd1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
