@@ -10,16 +10,15 @@ using System.Threading;
 
 namespace MyHelloService
 {
-    [ServiceBehavior(Namespace = "urn:www-infosupport-com:KC:Demos",InstanceContextMode = InstanceContextMode.Single,ConcurrencyMode = ConcurrencyMode.Multiple)]
+    [ServiceBehavior(Namespace = "urn:www-infosupport-com:KC:Demos",InstanceContextMode = InstanceContextMode.PerCall)]
 
     public class HelloImpl : IHello
     {
         //        [WebGet(UriTemplate="/{prompt}/{overig}",ResponseFormat = WebMessageFormat.Json)]
-        private int n;
+        
         public string SayHello(string prompt)
         {
-            Interlocked.Increment(ref n);
-            string ret = string.Format($"Hello: {prompt}, {n}");
+            string ret = string.Format($"Hello: {prompt}");
             Console.WriteLine(ret);
             return ret;
         }

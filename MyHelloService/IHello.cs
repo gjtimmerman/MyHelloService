@@ -7,7 +7,7 @@ using System.Text;
 
 namespace MyHelloService
 {
-    [ServiceContract(Namespace = "urn:www-infosupport-com:KC:Demos",SessionMode = SessionMode.Required)]
+    [ServiceContract(Namespace = "urn:www-infosupport-com:KC:Demos")]
     public interface IHello
     {
         [OperationContract]
