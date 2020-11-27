@@ -11,20 +11,14 @@ namespace MyHelloClientNoProxy
     {
         static void Main(string[] args)
         {
-            MyCallbackClass mcc = new MyCallbackClass();
-            DuplexChannelFactory<MyHelloService.IHello> cf = new DuplexChannelFactory<MyHelloService.IHello>(new InstanceContext(mcc),"MyClientConfig");
+
+            ChannelFactory<MyHelloService.IHello> cf = new ChannelFactory<MyHelloService.IHello>("MyClientConfig");
             MyHelloService.IHello proxy = cf.CreateChannel();
-            proxy.SayHello("World!");
-            Console.ReadLine();
+            Console.WriteLine(proxy.SayHello("World!"));
+            Console.WriteLine(proxy.SayHello("World!"));
+            Console.WriteLine(proxy.SayHello("World!"));
             ((ICommunicationObject)proxy).Close();
           
-        }
-    }
-    class MyCallbackClass : MyHelloService.IHelloBack
-    {
-        public void SayHelloBack(string result)
-        {
-            Console.WriteLine(result);
         }
     }
 }

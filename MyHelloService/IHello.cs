@@ -7,12 +7,12 @@ using System.Text;
 
 namespace MyHelloService
 {
-    [ServiceContract(Namespace = "urn:www-infosupport-com:KC:Demos",CallbackContract = typeof(IHelloBack))]
+    [ServiceContract(Namespace = "urn:www-infosupport-com:KC:Demos",SessionMode = SessionMode.Required)]
     public interface IHello
     {
-        [OperationContract(IsOneWay = true)]
+        [OperationContract]
 //        [FaultContract(typeof(HelloFault))]
-        void SayHello(string prompt);
+        string SayHello(string prompt);
 
     }
     [ServiceContract(Namespace = "urn:www-infosupport-com:KC:Demos")]
